@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context="com.fanhl.hearthstone.ui.DragDemoActivity">
+
+    <TextView
+        android:text="Item1"
+        android:padding="10dp"
+        android:background="#ff19ae0d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item1"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#ffae6b43"
+        android:layout_height="match_parent"
+        android:id="@+id/container1">
+
+        <RelativeLayout
+            android:background="#ff5244ae"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/container2"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="211dp"
+            android:layout_marginStart="211dp"
+            android:layout_marginTop="102dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dest Text"
+                android:padding="15dp"
+                android:id="@+id/item2"
+                android:layout_alignParentBottom="true"
+                android:background="#ff9914ae"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="37dp"
+                android:layout_marginEnd="37dp"
+                android:layout_marginBottom="37dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>
