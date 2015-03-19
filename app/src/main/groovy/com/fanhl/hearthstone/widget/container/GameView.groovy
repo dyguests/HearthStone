@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.logic.Presenter
+import com.fanhl.hearthstone.model.Game
+import com.fanhl.hearthstone.widget.element.HeroView
 import com.fanhl.util.Lg
 
 /**
@@ -16,6 +18,11 @@ class GameView extends LinearLayout {
 
     Presenter presenter
 
+    LinearLayout manualView
+    HeroView heroView1
+    HeroView heroView2
+
+    Game data
 
 
     GameView(Context context) {
@@ -33,17 +40,26 @@ class GameView extends LinearLayout {
         init(context, attrs, defStyleAttr)
     }
 
-    def init(Context context, AttributeSet attributeSet, int i) {
+    def init(Context context, AttributeSet attributeSet, int defStyleAttr) {
         LayoutInflater inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)
         inflater.inflate(R.layout.view_game, this)
         assignViews()
     }
 
     private void assignViews() {
+        manualView = (LinearLayout) findViewById(R.id.manualView)
+        heroView1 = (HeroView) findViewById(R.id.heroView1)
+        heroView2 = (HeroView) findViewById(R.id.heroView2)
     }
+
 
     void setPresenter(Presenter presenter) {
         this.presenter = presenter
+        heroView1.presenter = presenter
+        heroView2.presenter = presenter
     }
 
+    void setData(Game game) {
+        this.data = game
+    }
 }

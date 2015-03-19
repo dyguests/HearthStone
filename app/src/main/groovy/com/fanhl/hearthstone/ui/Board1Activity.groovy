@@ -36,6 +36,8 @@ public class Board1Activity extends AbstractBaseActivity {
         engine.gameConnection = ((App) getApplication()).gameConnection
 
         engine.execute()
+
+        gameView.data=game
     }
 
     @Override

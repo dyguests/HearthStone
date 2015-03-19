@@ -25,7 +25,7 @@ class HeroView extends AbstractElementView {
 
     @Override
     protected void onTouchDown() {
-        if (true) {
+        if (presenter.validate(null)) {
             //新的action
             DragInfo dragInfo = new DragInfo()
             dragInfo.srcView = this
@@ -68,5 +68,4 @@ class HeroView extends AbstractElementView {
             draw(canvas)
         }
     }
-
 }

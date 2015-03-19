@@ -95,7 +95,7 @@ class Presenter {
         //gameView. change anime
 
         gameView.getHandler().post {
-            gameView.demo1View.setText("通信完成,PVM ECS ${System.currentTimeMillis()}")
+//            gameView.demo1View.setText("通信完成,PVM ECS ${System.currentTimeMillis()}")
         }
     }
 }
