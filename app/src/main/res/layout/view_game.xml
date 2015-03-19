@@ -4,10 +4,42 @@
               android:layout_height="match_parent"
               android:orientation="horizontal">
 
-    <com.fanhl.hearthstone.widget.element.Demo1View
-        android:id="@+id/demo1View"
-        android:padding="20dp"
-        android:layout_width="wrap_content"
-        android:text="TestDemo1View"
-        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/manualView"
+        android:layout_width="@dimen/view_manual_width"
+        android:layout_height="match_parent"
+        android:background="@color/manual_view_background"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.fanhl.hearthstone.widget.element.HeroView
+                android:id="@+id/heroView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.fanhl.hearthstone.widget.element.HeroView
+                android:id="@+id/heroView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

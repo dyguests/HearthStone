@@ -3,14 +3,9 @@ package com.fanhl.hearthstone.widget.container
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.widget.LinearLayout
-import com.arasthel.swissknife.SwissKnife
-import com.arasthel.swissknife.annotations.InjectView
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.logic.Presenter
-import com.fanhl.hearthstone.model.manual.Operate
-import com.fanhl.hearthstone.widget.element.Demo1View
 import com.fanhl.util.Lg
 
 /**
@@ -21,8 +16,6 @@ class GameView extends LinearLayout {
 
     Presenter presenter
 
-    @InjectView(R.id.demo1View)
-    Demo1View demo1View
 
 
     GameView(Context context) {
@@ -43,12 +36,14 @@ class GameView extends LinearLayout {
     def init(Context context, AttributeSet attributeSet, int i) {
         LayoutInflater inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)
         inflater.inflate(R.layout.view_game, this)
-        SwissKnife.inject(this)
+        assignViews()
+    }
+
+    private void assignViews() {
     }
 
     void setPresenter(Presenter presenter) {
         this.presenter = presenter
-        demo1View.presenter = presenter
     }
 
 }
