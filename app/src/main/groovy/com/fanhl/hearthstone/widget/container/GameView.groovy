@@ -61,5 +61,7 @@ class GameView extends LinearLayout {
 
     void setData(Game game) {
         this.data = game
+        heroView1.data = game.belongs[0].hero
+        heroView2.data = game.belongs[1].hero
     }
 }

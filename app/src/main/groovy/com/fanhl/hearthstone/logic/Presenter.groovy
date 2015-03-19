@@ -43,24 +43,15 @@ class Presenter {
         (!isProcessing) && 1 == 1
     }
 
-    def processOperate(String s) {
+    def processOperate(Operate operate) {
         if (!validate(null)) return
 
         //is fullAction
 
-        Action action = createAction(s)
+        Action action = createAction(null)
 
         //sendServer
         requestAction(action)
-
-        //new Thread return
-//        Thread.start {
-//            Thread.sleep(2000)
-//
-//            isProcessing = false
-//
-//            closure("通信完成等")
-//        }
     }
 
     Action createAction(String s) {

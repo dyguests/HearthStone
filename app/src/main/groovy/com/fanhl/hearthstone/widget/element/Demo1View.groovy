@@ -83,7 +83,7 @@ class Demo1View extends TextView {
         if (dragInfo.srcView == this) {
             lgd "拖拽结束 $dragInfo"
 
-            presenter.processOperate("drag this form a to b")
+            presenter.processOperate(null)
         }
 
         return true

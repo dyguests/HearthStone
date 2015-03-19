@@ -8,4 +8,9 @@ package com.fanhl.hearthstone.lang
 trait Roleable {
     MInt attack
     MInt blood
+
+    /**被冻住*/
+    boolean isFrozen = false
+    /**已攻击*/
+    boolean isAttacked = false
 }
