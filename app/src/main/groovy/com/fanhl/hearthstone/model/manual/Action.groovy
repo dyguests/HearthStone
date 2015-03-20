@@ -1,13 +1,13 @@
 package com.fanhl.hearthstone.model.manual
 
 
-import com.fanhl.util.NodeList
+import com.fanhl.util.ChainList
 
 /**
  * Created by fanhl on 15/1/5.
  * FIXME 对此类使用策略模式
  */
-class Action extends NodeList<Operate> implements NodeList.Nodeable<Action> {
+class Action extends ChainList<Operate> implements ChainList.Chainable<Action> {
     Action prev, next
 
     int playerIndex

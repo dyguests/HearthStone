@@ -1,6 +1,7 @@
 package com.fanhl.hearthstone.model
 
 import com.fanhl.hearthstone.model.manual.Round
+import com.fanhl.util.ChainList
 
 
 /**
@@ -10,7 +11,7 @@ import com.fanhl.hearthstone.model.manual.Round
  */
 class Manual {
     @Delegate
-    com.fanhl.util.NodeList<Round> rounds = new com.fanhl.util.NodeList<Round>()
+    ChainList<Round> rounds = new ChainList<Round>()
 
 
 }

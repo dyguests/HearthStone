@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @param <E> 实现Nodeable接口的类型
  *            Created by fanhl on 15/1/5.
  */
-public class NodeList<E extends NodeList.Nodeable> extends ArrayList<E> {
+public class ChainList<E extends ChainList.Chainable> extends ArrayList<E> {
 
     @Override
     public boolean add(E object) {
@@ -50,7 +50,7 @@ public class NodeList<E extends NodeList.Nodeable> extends ArrayList<E> {
     /**
      * @param <T> 此处为实现这个接口的类 如: class ClassA implements Nodeable<ClassA>{...}
      */
-    public static interface Nodeable<T extends Nodeable> {
+    public static interface Chainable<T extends Chainable> {
 
 //        T prev, next;//实现类要实现这个
 
