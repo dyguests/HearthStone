@@ -13,4 +13,25 @@ import com.fanhl.util.ChainList
 class Operate implements ChainList.Chainable<Operate> {
     Operate prev, next
 
+    Type type
+    def obj1
+    def obj2
+    def obj3
+
+    /**
+     * 操作类型
+     */
+    public static enum Type {
+        /*攻击(A攻击B)*/ ATTACK(0),
+        /*放置(把A放置到B中的C位置)*/PUT(1),
+        /*使用(使用A)*/USE(2),
+        /*使用(使用A指向B)*/USE2(3),
+        /*使用技能(使用A)*/SKILL(4),
+        /*使用技能(使用A指向B)*/SKILL2(5),
+        /*选中(选中A)*/SELECT(6)
+
+        int i
+
+        def Type(int i) { this.i = i }
+    }
 }

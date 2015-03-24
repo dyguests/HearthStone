@@ -11,20 +11,20 @@ class Action extends ChainList<Operate> implements ChainList.Chainable<Action> {
     Action prev, next
 
     int playerIndex
-    int type
-    def obj
+    Type type
+//    def obj
 
 
+    public static enum Type {
+        GAME_PREPARE(1000),
+        ROUND_NEXT(2000),
+        TURN_NEXT(3000),
+        ACTION_DASH(4001),
+        ACTION_ATTACK(4002)
 
-    public class Type {
-        public static final int GAME_PREPARE = 1000;
+        int i
 
-        public static final int ROUND_NEXT = 2000;
-
-        public static final int TURN_NEXT = 3000;
-
-        public static final int ACTION_DASH = 4001;
-        public static final int ACTION_PASS = 4002;
+        def Type(int i) { this.i = i }
     }
 
     @Override

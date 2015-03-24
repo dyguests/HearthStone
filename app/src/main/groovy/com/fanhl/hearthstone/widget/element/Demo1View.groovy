@@ -56,7 +56,7 @@ class Demo1View extends TextView {
     }
 
     boolean onTouchDown() {
-        presenter.validate(null)
+        presenter.validateOperate(null)
     }
 
     @Override

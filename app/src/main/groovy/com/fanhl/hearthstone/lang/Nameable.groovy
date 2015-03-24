@@ -5,7 +5,7 @@ package com.fanhl.hearthstone.lang
  */
 trait Nameable {
     /**id(暂时没用)*/
-//    int id
+    int id
     /**标题(名称)*/
     String title
     /**图片*/

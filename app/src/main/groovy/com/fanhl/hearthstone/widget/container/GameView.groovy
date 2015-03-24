@@ -3,17 +3,19 @@ package com.fanhl.hearthstone.widget.container
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.logic.Presenter
 import com.fanhl.hearthstone.model.Game
+import com.fanhl.hearthstone.lang.Datable
 import com.fanhl.hearthstone.widget.element.HeroView
 import com.fanhl.util.Lg
 
 /**
  * Created by fanhl on 15/3/17.
  */
-class GameView extends LinearLayout {
+class GameView extends LinearLayout implements Datable<Game> {
     static final def lgd = Lg.d.curry GameView.class.getSimpleName()
 
     Presenter presenter
@@ -63,5 +65,9 @@ class GameView extends LinearLayout {
         this.data = game
         heroView1.data = game.belongs[0].hero
         heroView2.data = game.belongs[1].hero
+    }
+
+    View findViewByData(def data) {
+        [heroView1, heroView2].find { it.data == data }
     }
 }

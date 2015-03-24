@@ -1,14 +1,12 @@
 package com.fanhl.hearthstone.lang
 
 import groovy.transform.AutoClone
-import groovy.transform.ToString
 
 /**
  * 用于存放由多个值组成的数值
  *
  * Created by fanhl on 15/1/23.
  */
-@ToString
 @AutoClone
 class MInt {
     /**基本值*/
@@ -32,4 +30,18 @@ class MInt {
      * @return
      */
     int getOutValue() { 0 }
+
+
+    public static MInt plus(MInt value, MInt right) {
+        value.current += right.current
+        value
+    }
+
+    public static MInt minus(MInt value, MInt right) {
+        value.current -= right.current
+        value
+    }
+
+    @Override
+    String toString() { current }
 }

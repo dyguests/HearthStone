@@ -175,3 +175,7 @@ HearthStone-android-groovy3项目中是logic
     1.1 打出随从牌的动画效果
 
     1.2 打出法术牌的动画效果
+
+#其它
+
+combine 合并

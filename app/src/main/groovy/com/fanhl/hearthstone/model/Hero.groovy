@@ -19,4 +19,9 @@ class Hero implements Nameable, Roleable, Costable, Cloneable {
         blood = new MInt(30)
         armor = 0
     }
+
+    @Override
+    String toString() {
+        "Hero(ATK:$attack,AMR:$armor,BLD:$blood)"
+    }
 }
