@@ -21,8 +21,8 @@ class GameView extends LinearLayout implements Datable<Game> {
     Presenter presenter
 
     LinearLayout manualView
-    HeroView heroView1
-    HeroView heroView2
+//    HeroView heroView1
+//    HeroView heroView2
 
     Game data
 
@@ -50,24 +50,24 @@ class GameView extends LinearLayout implements Datable<Game> {
 
     private void assignViews() {
         manualView = (LinearLayout) findViewById(R.id.manualView)
-        heroView1 = (HeroView) findViewById(R.id.heroView1)
-        heroView2 = (HeroView) findViewById(R.id.heroView2)
+//        heroView1 = (HeroView) findViewById(R.id.heroView1)
+//        heroView2 = (HeroView) findViewById(R.id.heroView2)
     }
 
 
     void setPresenter(Presenter presenter) {
         this.presenter = presenter
-        heroView1.presenter = presenter
-        heroView2.presenter = presenter
+//        heroView1.presenter = presenter
+//        heroView2.presenter = presenter
     }
 
     void setData(Game game) {
         this.data = game
-        heroView1.data = game.belongs[0].hero
-        heroView2.data = game.belongs[1].hero
+//        heroView1.data = game.belongs[0].hero
+//        heroView2.data = game.belongs[1].hero
     }
 
     View findViewByData(def data) {
-        [heroView1, heroView2].find { it.data == data }
+//        [heroView1, heroView2].find { it.data == data }
     }
 }

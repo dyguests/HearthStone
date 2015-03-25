@@ -59,10 +59,10 @@ class CardView extends AbstractElementView implements Datable<Card> {
         attackCoord = new PCoord(0.143f, 0.891f)
         bloodCoord = new PCoord(0.881f, 0.893f)
 
-        //FIXME测试用
-//        if (isInEditMode()) {
+        //测试用
+        if (isInEditMode()) {
             setData(new Minion(cost: new MInt(2), attack: new MInt(3, 1), blood: new MInt(4, -1)))
-//        }
+        }
     }
 
     @Override
