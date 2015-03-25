@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.view.DragEvent
 import android.view.View
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.builder.OperateBuilder
@@ -59,13 +58,6 @@ class HeroView extends AbstractElementView implements Datable<Hero> {
         } else {
             //继续处理上一个未完成的action
         }
-    }
-
-
-    @Override
-    void onDragDrop(DragEvent event) {
-        final DragInfo dragInfo = (DragInfo) event.getLocalState()
-        dragInfo.destView = this
     }
 
 

@@ -27,10 +27,12 @@
             android:showDividers="middle">
 
             <com.fanhl.hearthstone.widget.container.BelongView
+                android:id="@+id/belongRival"
                 style="@style/belong_view"
                 app:owner="rival"/>
 
             <com.fanhl.hearthstone.widget.container.BelongView
+                android:id="@+id/belongMe"
                 style="@style/belong_view"/>
         </LinearLayout>
 

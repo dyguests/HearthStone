@@ -4,45 +4,36 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import com.fanhl.hearthstone.R
+import com.fanhl.hearthstone.lang.Datable
 import com.fanhl.hearthstone.logic.Presenter
 import com.fanhl.hearthstone.model.Game
-import com.fanhl.hearthstone.lang.Datable
-import com.fanhl.hearthstone.widget.element.HeroView
 import com.fanhl.util.Lg
+import groovy.transform.InheritConstructors
 
 /**
  * Created by fanhl on 15/3/17.
  */
-class GameView extends LinearLayout implements Datable<Game> {
+@InheritConstructors
+class GameView extends AbstractContainerView implements Datable<Game> {
     static final def lgd = Lg.d.curry GameView.class.getSimpleName()
 
     Presenter presenter
 
     LinearLayout manualView
-//    HeroView heroView1
-//    HeroView heroView2
+//    LinearLayout belongsContainer
+    BelongView[] belongViews
+
+    Button nextTurnButton
+
 
     Game data
 
 
-    GameView(Context context) {
-        super(context)
-        init(context, null, 0)
-    }
-
-    GameView(Context context, AttributeSet attrs) {
-        super(context, attrs)
-        init(context, attrs, 0)
-    }
-
-    GameView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr)
-        init(context, attrs, defStyleAttr)
-    }
-
-    def init(Context context, AttributeSet attributeSet, int defStyleAttr) {
+    @Override
+    void init(Context context, AttributeSet attributeSet, int defStyleAttr) {
         LayoutInflater inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)
         inflater.inflate(R.layout.view_game, this)
         assignViews()
@@ -50,24 +41,34 @@ class GameView extends LinearLayout implements Datable<Game> {
 
     private void assignViews() {
         manualView = (LinearLayout) findViewById(R.id.manualView)
-//        heroView1 = (HeroView) findViewById(R.id.heroView1)
-//        heroView2 = (HeroView) findViewById(R.id.heroView2)
+//        belongsContainer = (LinearLayout) findViewById(R.id.belongsContainer)
+        belongViews = new BelongView[2]
+        belongViews[1] = (BelongView) findViewById(R.id.belongRival)
+        belongViews[0] = (BelongView) findViewById(R.id.belongMe)
+
+        nextTurnButton = (Button) findViewById(R.id.nextTurnButton)
     }
 
 
     void setPresenter(Presenter presenter) {
         this.presenter = presenter
-//        heroView1.presenter = presenter
-//        heroView2.presenter = presenter
+        belongViews*.presenter = presenter
     }
 
     void setData(Game game) {
         this.data = game
-//        heroView1.data = game.belongs[0].hero
-//        heroView2.data = game.belongs[1].hero
+        belongViews[0].data = game.belongs[0]
+        belongViews[1].data = game.belongs[1]
     }
 
     View findViewByData(def data) {
-//        [heroView1, heroView2].find { it.data == data }
+        View view = belongViews.find { it.data == data }
+        if (view) return view
+
+        view = belongViews[0].findViewByData(data)
+        if (view) return view
+
+        view = belongViews[1].findViewByData(data)
+        view
     }
 }

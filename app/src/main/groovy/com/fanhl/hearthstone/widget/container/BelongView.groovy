@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.lang.Datable
+import com.fanhl.hearthstone.logic.Presenter
 import com.fanhl.hearthstone.model.Belong
 import com.fanhl.hearthstone.model.Game
 
@@ -20,6 +21,8 @@ public class BelongView extends LinearLayout implements Datable<Belong> {
     public static final int OWNER_RIVAL = 1
 
     int owner = OWNER_ME
+
+    Presenter presenter
 
     Belong data
 
@@ -59,4 +62,9 @@ public class BelongView extends LinearLayout implements Datable<Belong> {
 
     }
 
+    void setData(Belong data) {
+        this.data = data
+    }
+
+    def findViewByData(def data) {}
 }

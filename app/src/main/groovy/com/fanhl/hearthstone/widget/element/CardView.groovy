@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.view.DragEvent
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.drag.DragInfo
 import com.fanhl.hearthstone.drawable.MIntDrawable
@@ -80,11 +79,6 @@ class CardView extends AbstractElementView implements Datable<Card> {
 
     }
 
-    @Override
-    void onDragDrop(DragEvent event) {
-        final DragInfo dragInfo = (DragInfo) event.getLocalState()
-        dragInfo.destView = this
-    }
 
     @Override
     protected void onSelfDragEnded(DragInfo dragInfo) {

@@ -101,12 +101,12 @@ abstract class AbstractElementView extends View {
         }
     }
 
-    /**
-     * 拖拽松手时处理
-     * FIXME 这里是不是所有的实现都一样,如果一样的话,直接把子类的实现提上来
-     * @param event
-     */
-    abstract void onDragDrop(DragEvent event)
+
+    @Override
+    void onDragDrop(DragEvent event) {
+        final DragInfo dragInfo = (DragInfo) event.getLocalState()
+        dragInfo.destView = this
+    }
 
     void onDragEnded(DragEvent event) {
         final DragInfo dragInfo = (DragInfo) event.getLocalState()
