@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:background="#123456"
+              android:layout_height="match_parent"
+              android:layout_margin="20dp"
+              android:clipChildren="false"
+              android:orientation="vertical">
+
+    <com.fanhl.hearthstone.widget.element.Demo2View
+        android:background="#FEDBAA"
+        android:layout_width="220dp"
+        android:layout_height="200dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

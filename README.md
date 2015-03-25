@@ -179,3 +179,4 @@ HearthStone-android-groovy3项目中是logic
 #其它
 
 combine 合并
+卡牌宽长比: 420:580 ~=1.381f

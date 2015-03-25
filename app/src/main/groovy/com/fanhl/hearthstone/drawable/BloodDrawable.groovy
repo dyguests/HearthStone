@@ -12,6 +12,7 @@ import com.fanhl.hearthstone.lang.MInt
 /**
  * Created by fanhl on 15/3/24.
  */
+@Deprecated
 class BloodDrawable extends ShapeDrawable {
     MInt data
     private TextPaint paint

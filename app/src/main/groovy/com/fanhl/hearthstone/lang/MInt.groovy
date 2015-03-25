@@ -44,4 +44,22 @@ class MInt {
 
     @Override
     String toString() { current }
+
+    /**
+     * 正常状态
+     * @return
+     */
+    boolean isNormal() { base == current + getOutValue() }
+
+    /**
+     * 强化
+     * @return
+     */
+    boolean isStrengthen() { base < current + getOutValue() }
+
+    /**
+     * 弱化
+     * @return
+     */
+    boolean isWeaken() { base > current + getOutValue() }
 }
