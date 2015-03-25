@@ -3,11 +3,14 @@ package com.fanhl.hearthstone.widget.container
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import com.fanhl.hearthstone.logic.Presenter
 
 /**
  * Created by fanhl on 15/3/25.
  */
 abstract class AbstractContainerView extends LinearLayout{
+
+    Presenter presenter
 
     AbstractContainerView(Context context) {
         super(context)
@@ -25,4 +28,12 @@ abstract class AbstractContainerView extends LinearLayout{
     }
 
     abstract void init(Context context, AttributeSet attributeSet, int defStyleAttr)
+
+    /**
+     * 绑定view的presenter,及子view的presenter
+     * @param presenter
+     */
+    void setPresenter(Presenter presenter) {
+        this.presenter = presenter
+    }
 }

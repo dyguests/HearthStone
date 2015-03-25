@@ -5,12 +5,8 @@ package com.fanhl.hearthstone.lang
  *
  * Created by fanhl on 15/3/19.
  */
-trait Roleable {
-    MInt attack
-    MInt blood
+trait Roleable implements Attackable {
 
     /**被冻住*/
     boolean isFrozen = false
-    /**已攻击*/
-    boolean isAttacked = false
 }

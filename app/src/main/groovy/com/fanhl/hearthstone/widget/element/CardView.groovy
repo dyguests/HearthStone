@@ -8,10 +8,10 @@ import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.drag.DragInfo
 import com.fanhl.hearthstone.drawable.MIntDrawable
 import com.fanhl.hearthstone.exception.CardTypeNotFoundException
+import com.fanhl.hearthstone.lang.Attackable
 import com.fanhl.hearthstone.lang.Datable
 import com.fanhl.hearthstone.lang.MInt
 import com.fanhl.hearthstone.lang.PCoord
-import com.fanhl.hearthstone.lang.Roleable
 import com.fanhl.hearthstone.model.card.Card
 import com.fanhl.hearthstone.model.card.Minion
 import com.fanhl.hearthstone.model.card.Spell
@@ -94,14 +94,16 @@ class CardView extends AbstractElementView implements Datable<Card> {
             draw(canvas)
         }
 
-        setPercentBounds(costDrawable, costCoord, WIDTH2MINT_SIZE, width, height)
-        costDrawable.draw(canvas)
+        if (data) {
+            setPercentBounds(costDrawable, costCoord, WIDTH2MINT_SIZE, width, height)
+            costDrawable.draw(canvas)
 
-        if (data instanceof Roleable) {
-            setPercentBounds(attackDrawable, attackCoord, WIDTH2MINT_SIZE, width, height)
-            attackDrawable.draw(canvas)
-            setPercentBounds(bloodDrawable, bloodCoord, WIDTH2MINT_SIZE, width, height)
-            bloodDrawable.draw(canvas)
+            if (data instanceof Attackable) {
+                setPercentBounds(attackDrawable, attackCoord, WIDTH2MINT_SIZE, width, height)
+                attackDrawable.draw(canvas)
+                setPercentBounds(bloodDrawable, bloodCoord, WIDTH2MINT_SIZE, width, height)
+                bloodDrawable.draw(canvas)
+            }
         }
     }
 
@@ -128,7 +130,7 @@ class CardView extends AbstractElementView implements Datable<Card> {
         }
 
         costDrawable.data = data.cost
-        if (data instanceof Roleable) {
+        if (data instanceof Attackable) {
             attackDrawable.data = data.attack
             bloodDrawable.data = data.blood
         }

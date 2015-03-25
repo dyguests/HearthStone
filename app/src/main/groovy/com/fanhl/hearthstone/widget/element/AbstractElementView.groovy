@@ -102,7 +102,6 @@ abstract class AbstractElementView extends View {
     }
 
 
-    @Override
     void onDragDrop(DragEvent event) {
         final DragInfo dragInfo = (DragInfo) event.getLocalState()
         dragInfo.destView = this

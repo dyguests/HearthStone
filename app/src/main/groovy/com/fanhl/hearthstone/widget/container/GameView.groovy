@@ -20,7 +20,6 @@ import groovy.transform.InheritConstructors
 class GameView extends AbstractContainerView implements Datable<Game> {
     static final def lgd = Lg.d.curry GameView.class.getSimpleName()
 
-    Presenter presenter
 
     LinearLayout manualView
 //    LinearLayout belongsContainer
@@ -49,7 +48,7 @@ class GameView extends AbstractContainerView implements Datable<Game> {
         nextTurnButton = (Button) findViewById(R.id.nextTurnButton)
     }
 
-
+    @Override
     void setPresenter(Presenter presenter) {
         this.presenter = presenter
         belongViews*.presenter = presenter
