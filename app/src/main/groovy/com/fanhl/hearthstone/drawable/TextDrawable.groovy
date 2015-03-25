@@ -10,30 +10,49 @@ import android.text.TextPaint
 class TextDrawable extends Drawable {
     public static final String DEFAULT_TEXT = "NA."
     public static final int DEFAULT_TEXT_SIZE = 20
-    public static final int DEFAULT_TEXT_COLOR = Color.GREEN
+    public static final int DEFAULT_TEXT_COLOR = Color.BLACK
 
     /**
      * Drawable宽度与文字大小的比率
      */
     public static float WIDTH2TEXT_SIZE = 1.0f
 
-    protected TextPaint paint
+    protected TextPaint strokePaint
+    protected TextPaint fillPaint
+
     protected float offsetY
 
     def data
 
     TextDrawable() {
-        paint = new TextPaint()
-        paint.setFlags(Paint.ANTI_ALIAS_FLAG)
-        paint.setTextAlign(Paint.Align.CENTER)
-        paint.setColor(DEFAULT_TEXT_COLOR)
-        paint.setTextSize(DEFAULT_TEXT_SIZE)//not use
+        strokePaint = new TextPaint()
+        strokePaint.setFlags(Paint.ANTI_ALIAS_FLAG)
+        strokePaint.setTextAlign(Paint.Align.CENTER)
+        strokePaint.setStrokeWidth(2f)
+        strokePaint.setStyle(Paint.Style.STROKE)
+        strokePaint.setColor(DEFAULT_TEXT_COLOR)
+        strokePaint.setTextSize(DEFAULT_TEXT_SIZE)//not use
+//        strokePaint.setFakeBoldText(true) // 外层text采用粗体
+
+        fillPaint = new TextPaint()
+        fillPaint.setFlags(Paint.ANTI_ALIAS_FLAG)
+        fillPaint.setTextAlign(Paint.Align.CENTER)
+        strokePaint.setStyle(Paint.Style.FILL)
+        fillPaint.setColor(DEFAULT_TEXT_COLOR)
+        fillPaint.setTextSize(DEFAULT_TEXT_SIZE)//not use
+
+
         refreshOffsetY()
     }
 
-    void onDraw(Canvas canvas, Paint paint) {
+    void onDraw(Canvas canvas, Paint strokePaint, Paint fillPaint) {
         String text = data ? "$data" : DEFAULT_TEXT
-        canvas.drawText(text, ((float) (width / 2)), ((float) (height / 2 + offsetY)), paint)
+
+        float x = (float) (width / 2)
+        float y = (float) (height / 2 + offsetY)
+
+        canvas.drawText(text, x, y, fillPaint)
+        canvas.drawText(text, x, y, strokePaint)
     }
 
     @Override
@@ -42,7 +61,7 @@ class TextDrawable extends Drawable {
 
         final int count = canvas.save()
         canvas.translate(r.left, r.top)
-        onDraw(canvas, paint)
+        onDraw(canvas, strokePaint, fillPaint)
         canvas.restoreToCount(count)
     }
 
@@ -50,7 +69,7 @@ class TextDrawable extends Drawable {
      * 为了使文字垂直居中的垂直偏移量
      */
     protected void refreshOffsetY() {
-        offsetY = -(float) ((paint.getFontMetrics().top + paint.getFontMetrics().bottom) / 2)
+        offsetY = -(float) ((strokePaint.getFontMetrics().top + strokePaint.getFontMetrics().bottom) / 2)
     }
 
     @Override
@@ -64,7 +83,9 @@ class TextDrawable extends Drawable {
 
     @Override
     protected void onBoundsChange(Rect bounds) {
-        paint.setTextSize(((float) (getWidth() * WIDTH2TEXT_SIZE)))
+        strokePaint.setStrokeWidth(((float) (getWidth() * WIDTH2TEXT_SIZE*0.01)))
+        strokePaint.setTextSize(((float) (getWidth() * WIDTH2TEXT_SIZE)))
+        fillPaint.setTextSize(((float) (getWidth() * WIDTH2TEXT_SIZE)))
         refreshOffsetY()
     }
 

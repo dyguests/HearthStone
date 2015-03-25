@@ -21,8 +21,8 @@ abstract class AbstractElementView extends View {
     static def lgd = Lg.d.curry AbstractElementView.class.getSimpleName()
 
     protected Presenter presenter
-    protected int newWidthMeasureSpec
-    protected int newHeightMeasureSpec
+    protected int mWidthMeasureSpec
+    protected int mHeightMeasureSpec
 
     AbstractElementView(Context context) {
         super(context)
@@ -44,12 +44,31 @@ abstract class AbstractElementView extends View {
     }
 
     private void initMeasureSpec(Context context) {
-        int heroWidth = context.getResources().getDimension(R.dimen.view_hero_width)
-        int heroHeight = context.getResources().getDimension(R.dimen.view_hero_height)
+        int width = getInitWidth(context)
+        int height = getInitHeight(context)
         //注意,这里要用  android.view.View.MeasureSpec ,一定要写全包名
-        newWidthMeasureSpec = android.view.View.MeasureSpec.makeMeasureSpec(heroWidth, android.view.View.MeasureSpec.EXACTLY)
-        newHeightMeasureSpec = android.view.View.MeasureSpec.makeMeasureSpec(heroHeight, android.view.View.MeasureSpec.EXACTLY)
+        mWidthMeasureSpec = android.view.View.MeasureSpec.makeMeasureSpec(width, android.view.View.MeasureSpec.EXACTLY)
+        mHeightMeasureSpec = android.view.View.MeasureSpec.makeMeasureSpec(height, android.view.View.MeasureSpec.EXACTLY)
     }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(mWidthMeasureSpec, mHeightMeasureSpec)
+    }
+
+    /**
+     * 从dimen.xml文件中取得宽度
+     * @param context
+     * @return
+     */
+    protected abstract float getInitWidth(Context context)
+
+    /**
+     * 从dimen.xml文件中取得高度
+     * @param context
+     * @return
+     */
+    protected abstract float getInitHeight(Context context)
 
     /**
      *
@@ -84,6 +103,7 @@ abstract class AbstractElementView extends View {
 
     /**
      * 拖拽松手时处理
+     * FIXME 这里是不是所有的实现都一样,如果一样的话,直接把子类的实现提上来
      * @param event
      */
     abstract void onDragDrop(DragEvent event)

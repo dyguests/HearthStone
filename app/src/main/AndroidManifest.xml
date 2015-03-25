@@ -25,6 +25,12 @@
             android:name=".ui.Board1Activity"
             android:screenOrientation="sensorLandscape" >
         </activity>
+        <activity
+            android:name=".ui.Demo3Activity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+
+
     </application>
 
 </manifest>

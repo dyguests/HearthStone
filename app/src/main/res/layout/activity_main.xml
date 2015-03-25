@@ -19,4 +19,9 @@
         android:layout_height="wrap_content"
         android:text="board1"
         android:id="@+id/board1"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="demo3"
+        android:id="@+id/demo3"/>
 </LinearLayout>

@@ -9,6 +9,7 @@ import com.fanhl.hearthstone.logic.Engine
 import com.fanhl.hearthstone.logic.Presenter
 import com.fanhl.hearthstone.model.Game
 import com.fanhl.hearthstone.widget.container.GameView
+import com.fanhl.hearthstone.widget.element.CardView
 
 public class Board1Activity extends AbstractBaseActivity {
     Engine engine
@@ -36,7 +37,6 @@ public class Board1Activity extends AbstractBaseActivity {
         engine.gameConnection = ((App) getApplication()).gameConnection
 
         engine.execute()
-
         gameView.data=game
     }
 

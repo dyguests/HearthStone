@@ -7,4 +7,8 @@
 
     <dimen name="view_hero_width">100dp</dimen>
     <dimen name="view_hero_height">120dp</dimen>
+
+    <dimen name="view_card_width">105dp</dimen>
+    <dimen name="view_card_height">145dp</dimen>
+
 </resources>

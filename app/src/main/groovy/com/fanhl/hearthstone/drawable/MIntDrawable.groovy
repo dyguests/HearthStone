@@ -16,13 +16,18 @@ class MIntDrawable extends TextDrawable {
     }
 
     @Override
-    void onDraw(Canvas canvas, Paint paint) {
+    void onDraw(Canvas canvas, Paint strokePaint, Paint fillPaint) {
         String text = data ? "$data" : DEFAULT_TEXT
 
-        if (data.isNormal()) paint.setColor(Color.WHITE)
-        else if (data.isStrengthen()) paint.setColor(Color.GREEN)
-        else if (data.isWeaken()) paint.setColor(Color.RED)
 
-        canvas.drawText(text, ((float) (width / 2)), ((float) (height / 2 + offsetY)), paint)
+        if (data?.isNormal()) fillPaint.setColor(Color.WHITE)
+        else if (data?.isStrengthen()) fillPaint.setColor(Color.GREEN)
+        else if (data?.isWeaken()) fillPaint.setColor(Color.RED)
+
+        float x = (float) (width / 2)
+        float y = (float) (height / 2 + offsetY)
+
+        canvas.drawText(text, x, y, strokePaint)
+        canvas.drawText(text, x, y, fillPaint)
     }
 }

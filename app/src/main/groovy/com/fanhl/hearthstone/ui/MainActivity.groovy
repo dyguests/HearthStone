@@ -16,6 +16,7 @@ public class MainActivity extends AbstractBaseActivity {
 
         findViewById(R.id.dragDemo).onClickListener = { openActivity(DragDemoActivity.class) }
         findViewById(R.id.board1).onClickListener = { openActivity(Board1Activity.class) }
+        findViewById(R.id.demo3).onClickListener = { openActivity(Demo3Activity.class) }
     }
 
     def initGameConnection() {

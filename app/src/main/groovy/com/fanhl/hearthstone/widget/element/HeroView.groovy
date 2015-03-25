@@ -9,8 +9,7 @@ import android.view.View
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.builder.OperateBuilder
 import com.fanhl.hearthstone.drag.DragInfo
-import com.fanhl.hearthstone.drawable.AttackDrawable
-import com.fanhl.hearthstone.drawable.BloodDrawable
+import com.fanhl.hearthstone.drawable.MIntDrawable
 import com.fanhl.hearthstone.lang.Datable
 import com.fanhl.hearthstone.model.Hero
 import groovy.transform.InheritConstructors
@@ -24,8 +23,8 @@ import groovy.transform.InheritConstructors
 class HeroView extends AbstractElementView implements Datable<Hero> {
     Drawable foregroundDrawable
 
-    AttackDrawable attackDrawable
-    BloodDrawable bloodDrawable
+    MIntDrawable attackDrawable
+    MIntDrawable bloodDrawable
 
     Hero data
 
@@ -34,8 +33,18 @@ class HeroView extends AbstractElementView implements Datable<Hero> {
     void init(Context context, AttributeSet attrs, int defStyleAttr) {
         super.init(context, attrs, defStyleAttr)
         foregroundDrawable = getResources().getDrawable(R.drawable.hero_view_background)
-        attackDrawable = new AttackDrawable()
-        bloodDrawable = new BloodDrawable()
+        attackDrawable = new MIntDrawable()
+        bloodDrawable = new MIntDrawable()
+    }
+
+    @Override
+    protected float getInitWidth(Context context) {
+        context.getResources().getDimension(R.dimen.view_hero_width)
+    }
+
+    @Override
+    protected float getInitHeight(Context context) {
+        context.getResources().getDimension(R.dimen.view_hero_height)
     }
 
     @Override
@@ -68,11 +77,6 @@ class HeroView extends AbstractElementView implements Datable<Hero> {
         presenter.processOperate(OperateBuilder.create(dragInfo))
     }
 
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(newWidthMeasureSpec, newHeightMeasureSpec)
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
