@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.fanhl.hearthstone.R
 import com.fanhl.hearthstone.lang.Datable
-import com.fanhl.hearthstone.model.Belong
+import com.fanhl.hearthstone.model.container.Belong
 import groovy.transform.InheritConstructors
 
 /**
